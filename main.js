@@ -1,8 +1,22 @@
+document.getElementById("status").innerHTML =
+  "DeviceOrientationEvent: " +
+  (window.DeviceOrientationEvent ? "" : "not ") +
+  "supported<br>";
+document.getElementById("status").innerHTML +=
+  "DeviceMotionEvent: " +
+  (window.DeviceMotionEvent ? "" : "not ") +
+  "supported<br>";
+document.getElementById("status").innerHTML +=
+  "MozOrientation: " +
+  (window.onMozOrientation ? "" : "not ") +
+  "supported<br>";
+
 if (window.DeviceOrientationEvent) {
   window.addEventListener(
     "deviceorientation",
     (event) => {
-      tilt([event.beta, event.gamma]);
+      document.getElementById("status").innerHTML =
+        "beta: " + event.beta + "<br>gamma: " + event.gamma;
     },
     true
   );
@@ -10,7 +24,13 @@ if (window.DeviceOrientationEvent) {
   window.addEventListener(
     "devicemotion",
     (event) => {
-      tilt([event.acceleration.x * 2, event.acceleration.y * 2]);
+      document.getElementById("status").innerHTML =
+        "acceleration: x=" +
+        event.acceleration.x +
+        ", y=" +
+        event.acceleration.y +
+        ", z=" +
+        event.acceleration.z;
     },
     true
   );
@@ -18,7 +38,8 @@ if (window.DeviceOrientationEvent) {
   window.addEventListener(
     "MozOrientation",
     (event) => {
-      tilt([event.x * 50, event.y * 50]);
+      document.getElementById("status").innerHTML =
+        "x: " + event.x + "<br>y: " + event.y;
     },
     true
   );
