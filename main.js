@@ -108,7 +108,6 @@ window.addEventListener("deviceorientation", (event) => {
   };
   var now = new Date().getTime();
   if (now - lastTime > 100) {
-    console.log(data);
     socket.send(JSON.stringify(data));
     lastTime = now;
   }
