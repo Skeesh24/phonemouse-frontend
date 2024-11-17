@@ -1,4 +1,4 @@
-var socket = new WebSocket("ws://0.0.0.0:8000/ws");
+var socket = new WebSocket("wss://phonemouseweb.onrender.com/ws");
 var lastTime = 0;
 socket.onopen = () => {
   socket.send("connected");
